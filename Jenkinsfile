@@ -31,7 +31,7 @@ node('agent1') {
     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
         sh 'docker context ls'
         sh 'docker info'
-        sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD https://registry.hub.docker.com'
+        sh 'docker login -u $kaushikkjha -p $Kaushik@1519 https://registry.hub.docker.com'
         app.push("${env.BUILD_NUMBER}")
     }
 }
