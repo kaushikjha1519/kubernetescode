@@ -20,21 +20,21 @@ node('agent1') {
         }
     }
 
-    //stage('Push image') {
-        
-       // docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-            app.push("${env.BUILD_NUMBER}")
-       // }
-    //}
-
     stage('Push image') {
+        
+        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+            app.push("${env.BUILD_NUMBER}")
+       }
+    }
+
+    /*stage('Push image') {
     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
         sh 'docker context ls'
         sh 'docker info'
         sh 'docker login -u $kaushikkjha -p $Kaushik@1519 https://registry.hub.docker.com'
         app.push("${env.BUILD_NUMBER}")
     }
-}
+}*/
     
     stage('Trigger ManifestUpdate') {
                 echo "triggering updatemanifestjob"
