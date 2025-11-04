@@ -21,6 +21,8 @@ node('agent1') {
     }
 
     stage('Push image') {
+
+        docker context use default || true
         
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
             app.push("${env.BUILD_NUMBER}")
